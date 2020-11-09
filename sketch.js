@@ -1,0 +1,156 @@
+const Engine = Matter.Engine;
+const World= Matter.World;
+const Bodies = Matter.Bodies;
+const Constraint = Matter.Constraint;
+
+var ground;
+var division1,division2,division3,division4,division5,division6,division7,division8,division9;
+var plinko1,plinko2,plinko3,plinko4,plinko5,plinko6,plinko7,plinko8;
+var p1,p2,p3,p4,p5,p6,p7,p8,p9;
+var pl1,pl2,pl3,pl4,pl5,pl6,pl7,pl8;
+var pli1,pli2,pli3,pli4,pli5,pli6,pli7,pli8,pli9;
+var plin1,plin2,plin3,plin4,plin5,plin6,plin7,plin8;
+var plink1,plink2,plink3,plink4,plink5,plink6,plink7,plink8,plink9;
+var particles = [];
+
+function setup() {
+  createCanvas(800,800);
+  engine = Engine.create();
+  world = engine.world;
+  division1 = new Divisions(400,650);
+  division2 = new Divisions(600,650);
+  division3 = new Divisions(500,650);
+  division4 = new Divisions(700,650);
+  division5 = new Divisions(200,650);
+  division6 = new Divisions(100,650);
+  division7 = new Divisions(300,650);
+  division8 = new Divisions(10,650);
+  division9 = new Divisions(790,650);
+  plinko1 = new Plinko(550,450);
+  plinko2 = new Plinko(450,450);
+  plinko3 = new Plinko(650,450);
+  plinko4 = new Plinko(750,450);
+  plinko5 = new Plinko(350,450);
+  plinko6 = new Plinko(250,450);
+  plinko7 = new Plinko(50,450);
+  plinko8 = new Plinko(150,450);
+  pl1 = new Plinko(550,350);
+  pl2 = new Plinko(450,350);
+  pl3 = new Plinko(650,350);
+  pl4 = new Plinko(750,350);
+  pl5 = new Plinko(350,350);
+  pl6 = new Plinko(250,350);
+  pl7 = new Plinko(50,350);
+  pl8 = new Plinko(150,350);
+  p1 = new Plinko(600,400);
+  p2 = new Plinko(500,400);
+  p3 = new Plinko(400,400);
+  p4 = new Plinko(300,400);
+  p5 = new Plinko(200,400);
+  p6 = new Plinko(100,400);
+  p7 = new Plinko(700,400);
+  p8 = new Plinko(800,400);
+  p9 = new Plinko(0,400);
+  pli1 = new Plinko(600,300);
+  pli2 = new Plinko(500,300);
+  pli3 = new Plinko(400,300);
+  pli4 = new Plinko(300,300);
+  pli5 = new Plinko(200,300);
+  pli6 = new Plinko(100,300);
+  pli7 = new Plinko(700,300);
+  pli8 = new Plinko(800,300);
+  pli9 = new Plinko(0,300);
+  plin1 = new Plinko(550,250);
+  plin2 = new Plinko(450,250);
+  plin3 = new Plinko(650,250);
+  plin4 = new Plinko(750,250);
+  plin5 = new Plinko(350,250);
+  plin6 = new Plinko(250,250);
+  plin7 = new Plinko(50,250);
+  plin8 = new Plinko(150,250);
+  plink1 = new Plinko(600,200);
+  plink2 = new Plinko(500,200);
+  plink3 = new Plinko(400,200);
+  plink4 = new Plinko(300,200);
+  plink5 = new Plinko(200,200);
+  plink6 = new Plinko(100,200);
+  plink7 = new Plinko(700,200);
+  plink8 = new Plinko(800,200);
+  plink9 = new Plinko(0,200);
+  ground = new Ground();
+
+}
+
+function draw() {
+  background(255,255,255);  
+  Engine.update(engine);
+  ground.display();
+  division1.display();
+  division2.display();
+  division3.display();
+  division4.display();
+  division5.display();
+  division6.display();
+  division7.display();
+  division8.display();
+  division9.display();
+  p1.display();
+  p2.display();
+  p3.display();
+  p4.display();
+  p5.display();
+  p6.display();
+  p7.display();
+  p8.display();
+  p9.display();
+  pl1.display();
+  pl2.display();
+  pl3.display();
+  pl4.display();
+  pl5.display();
+  pl6.display();
+  pl7.display();
+  pl8.display();
+  pli1.display();
+  pli2.display();
+  pli3.display();
+  pli4.display();
+  pli5.display();
+  pli6.display();
+  pli7.display();
+  pli8.display();
+  pli8.display();
+  pli9.display();
+  plin1.display();
+  plin2.display();
+  plin3.display();
+  plin4.display();
+  plin5.display();
+  plin6.display();
+  plin7.display();
+  plin8.display();
+  plink1.display();
+  plink2.display();
+  plink3.display();
+  plink4.display();
+  plink5.display();
+  plink6.display();
+  plink7.display();
+  plink8.display();
+  plink9.display();
+  plinko1.display();
+  plinko2.display();
+  plinko3.display();
+  plinko4.display();
+  plinko5.display();
+  plinko6.display();
+  plinko7.display();
+  plinko8.display();
+  if(frameCount%60===0){
+
+    particles.push(new Particle(random(width/2-10,width/2+10),10,10));
+
+  }
+  for(var j = 0; j < particles.length; j++){
+     particles[j].display(); } 
+}
